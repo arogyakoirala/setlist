@@ -1,0 +1,13 @@
+{
+  "name": "Set List",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {},
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "content_security_policy": "script-src 'self' 'sha256-e3KEY/zSF9HtXDhGNchp0J50kBoZVj1Vz799bIM4NKA='; object-src 'self'"
+}
