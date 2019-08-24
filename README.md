@@ -1,13 +1,21 @@
 # setlist 
 ### *A home to all your guitar chords, in your browser.*
 
-**setlist** is a browser based app that is designed to store (copy and paste) song chords and tablatures for later use. 
+**setlist** is a browser based app that is designed to store (copy and paste) song chords and tablatures for later use. The app stores everything in the browser's local storage --  clearing browser data will also remove all your songs.
 
-The app stores everything in the browser's local storage, and thus, clearing browser data will also delete lose all your songs. 
+This app was designed to never let you run out of songs to play in your next social gathering. 
+
+If you like this app, please star it. Also, if you are a fellow musician + react developer, feel free to fork the code and make any improvements; let me know by sending a pull request or opening a issue.
+
+
+To get started, you can simply open the demo app, and start storing all your songs there. So what are you waiting for, **[get started now](http://setlist-app.surge.sh)**.
+
+---
+
+Here is what the application looks like.
 
 ![](https://raw.githubusercontent.com/arogyakoirala/bucket/master/setlist.gif)
 
-Check out the [live version.](http://setlist-app.surge.sh)
 
 ---
 

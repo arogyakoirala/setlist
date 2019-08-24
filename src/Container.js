@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Editor from './Editor.js'
 import _ from 'lodash';
 import $ from 'jquery';
-import songs from './songs3.json';
+import songs from './songs.json';
 
 
 class Container extends Component {
@@ -43,7 +43,7 @@ class Container extends Component {
 
     componentDidMount() {
         if (!localStorage.getItem("songs")) {
-            console.log("No songs bruv");
+            // console.log("No songs bruv");
 
             localStorage.setItem("songs", JSON.stringify(songs))
 
@@ -143,6 +143,7 @@ class Container extends Component {
     onSelectSong(index) {
         this.setState({
             currentSong: JSON.parse(localStorage.getItem("songs")).reverse()[index],
+            songId: JSON.parse(localStorage.getItem("songs")).reverse()[index].songId,
             isShowingList: false
         })
     }
@@ -152,19 +153,23 @@ class Container extends Component {
 
             const { songId } = this.state;
 
+            
+            
+
             const oldSongs = _.cloneDeep(JSON.parse(localStorage.getItem("songs")))
 
             const index = _.findIndex(oldSongs, function (o) { return o.songId === songId; })
 
 
-
+            // console.log(oldSongs.map((item)=>{return item.songName}), index);
+            
 
             oldSongs.splice(index, 1)
             localStorage.setItem("songs", JSON.stringify(oldSongs));
             this.setState({
                 songId: oldSongs.length,
                 currentSong: {
-                    songBody: "Instructions: <br/><br/> 1. Click me <br/> 2. Ctrl+A <br/> 3. Ctrl+Shift+V",
+                    songBody: "Song deleted. You can now add a new song here. <br/> <br/> Instructions: <br/><br/> 1. Click me <br/> 2. Ctrl+A <br/> 3. Ctrl+Shift+V",
                     songName: "Song Title",
                     songArtist: "Song Artist"
                 }
@@ -200,9 +205,9 @@ class Container extends Component {
 
 
                     <div style={{ float: "right" }}>
+                        {!this.state.isShowingList &&  <button onClick={this.onSave} style={{ marginRight: "1rem" }} className={this.state.canSave ? "btn-floating  btn waves-effect waves-light red darken-4" : "btn-floating  btn waves-effect waves-light grey darken-3"} ><i className="material-icons">save</i></button>}
+                        {!this.state.isShowingList && <button onClick={this.onDelete} style={{ marginRight: "1rem" }} className="btn-floating  btn waves-effect waves-light grey darken-3 "><i className="material-icons">delete</i></button>}
                         <button onClick={this.onDispayList} style={{ marginRight: "1rem" }} className="btn-floating  btn waves-effect waves-light grey darken-3"><i className="material-icons">format_list_numbered</i></button>
-                        <button onClick={this.onSave} style={{ marginRight: "1rem" }} className={this.state.canSave ? "btn-floating  btn waves-effect waves-light red darken-4" : "btn-floating  btn waves-effect waves-light grey darken-3"} ><i className="material-icons">save</i></button>
-                        <button onClick={this.onDelete} style={{ marginRight: "1rem" }} className="btn-floating  btn waves-effect waves-light grey darken-3 "><i className="material-icons">delete</i></button>
                         <button onClick={this.onNewSong} style={{ marginRight: "1rem" }} className="btn-floating  btn-large waves-effect waves-light red darken-4"><i className="material-icons">add</i></button>
 
                     </div>

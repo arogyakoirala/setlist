@@ -36,7 +36,6 @@ class Editor extends Component {
 
         function initState() {
             if (Object.keys(props.currentSong).length > 0) {
-                console.log();
 
                 return {
                     songName: props.currentSong.songName,
@@ -62,7 +61,6 @@ class Editor extends Component {
     };
 
     shouldComponentUpdate(nextProps, nextState) {
-        console.log(this.state.songBody, nextProps);
 
         return (
             this.state.songBody !== nextProps.currentSong.songBody ||
@@ -72,7 +70,6 @@ class Editor extends Component {
     }
 
     componentDidUpdate() {
-        console.log("Component Update");
 
         this.setState({
             songName: this.props.currentSong.songName,
@@ -84,7 +81,6 @@ class Editor extends Component {
 
 
     onNameChange(e) {
-        console.log("onNameChange");
 
 
         this.setState({
@@ -103,7 +99,6 @@ class Editor extends Component {
 
 
     onArtistChange(e) {
-        console.log("onArtistChange");
 
         this.setState({
             songArtist: e.target.value
@@ -118,7 +113,6 @@ class Editor extends Component {
     }
 
     onBodyChange(e) {
-        console.log("onBodyChange");
         
         this.setState({
             songBody: e.target.value
